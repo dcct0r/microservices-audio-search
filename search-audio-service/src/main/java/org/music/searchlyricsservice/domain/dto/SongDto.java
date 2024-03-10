@@ -1,4 +1,4 @@
-package org.music.audioservice.domain.dto;
+package org.music.searchlyricsservice.domain.dto;
 
 import lombok.Getter;
 import lombok.Setter;

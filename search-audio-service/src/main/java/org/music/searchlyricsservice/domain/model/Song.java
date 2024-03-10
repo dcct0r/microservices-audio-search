@@ -1,4 +1,4 @@
-package org.music.audioservice.domain.model;
+package org.music.searchlyricsservice.domain.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
