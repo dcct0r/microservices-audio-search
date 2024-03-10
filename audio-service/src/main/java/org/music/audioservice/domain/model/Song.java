@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table()
+@Table(name = "music", schema = "tracks")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,14 +21,22 @@ public class Song {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "song_id")
     private UUID id;
 
     @NotNull
+    @Column(name = "song_name")
     private String songName;
+
     @NotNull
+    @Column(name = "author_name")
     private String authorName;
+
+    @Column(name = "description")
     private String description;
+
     @NotNull
     @CreationTimestamp
+    @Column(name = "published_date")
     private Date publishedDate;
 }
