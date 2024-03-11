@@ -7,6 +7,10 @@ spring:
         - id: audio-service
           uri: lb://AUDIO-SERVICE
           predicates: Path=/catalog/songs/**
+        - id: search-audio-service
+          uri: lb://SEARCH-AUDIO-SERVICE
+          predicates: Path=/search/**
+
   security:
     oauth2:
       resourceserver:
