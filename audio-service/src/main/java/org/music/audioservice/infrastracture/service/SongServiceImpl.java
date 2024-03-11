@@ -25,7 +25,7 @@ public class SongServiceImpl implements SongService {
 
     @Override
     public List<Song> getAllSongs() {
-        if(songRepository.count() == 0) {
+        if (songRepository.count() == 0) {
             throw new SongNotFoundException(TextMessages.emptySongList);
         }
         return songRepository.findAll();
@@ -33,15 +33,15 @@ public class SongServiceImpl implements SongService {
 
     @Override
     public Optional<Song> getSongById(UUID id) {
-        if(!songRepository.existsById(id)) {
-            throw new SongNotFoundException(TextMessages.songDoesntExistException);
+        if (!songRepository.existsById(id)) {
+            throw new SongNotFoundException(TextMessages.songNotFoundException);
         }
         return songRepository.findById(id);
     }
 
     @Override
     public Song save(Song song) {
-        if(songRepository.existsById(song.getId())) {
+        if (songRepository.existsById(song.getId())) {
             throw new SongExistException(TextMessages.songExistException);
         }
         songRepository.save(song);
@@ -50,10 +50,9 @@ public class SongServiceImpl implements SongService {
 
     @Override
     public void removeById(UUID id) {
-        if(!songRepository.existsById(id)) {
-            throw new SongNotFoundException(TextMessages.songDoesntExistException);
-        } else {
-            songRepository.deleteById(id);
+        if (!songRepository.existsById(id)) {
+            throw new SongNotFoundException(TextMessages.emptySongList);
         }
+        songRepository.deleteById(id);
     }
 }

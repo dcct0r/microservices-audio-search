@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="create-author-table" author="roman">
+        <createTable tableName="author" schemaName="tracks">
+            <column name="author_id" type="uuid">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="citizenship" type="varchar(100)"/>
+            <column name="career_start" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birthday" type="date"/>
+            <column name="male" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="genre" type="text"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

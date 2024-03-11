@@ -6,7 +6,7 @@ spring:
       routes:
         - id: audio-service
           uri: lb://AUDIO-SERVICE
-          predicates: Path=/catalog/songs/**
+          predicates: Path=/catalog/**
         - id: search-audio-service
           uri: lb://SEARCH-AUDIO-SERVICE
           predicates: Path=/search/**

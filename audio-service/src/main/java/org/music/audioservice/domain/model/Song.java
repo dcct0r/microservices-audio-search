@@ -14,9 +14,9 @@ import java.util.UUID;
 @Entity
 @Table(name = "music", schema = "tracks")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Song {
 
     @Id
