@@ -1,6 +1,0 @@
-token_endpoint=http://localhost:8080/realms/musichub/protocol/openid-connect/token
-client_id=springsecurity
-client_secret=Q6ANNgJhisXn0U2CRckHj8eqfCR47Ry0
-username=test.user
-password=1111
-grant_type=password
