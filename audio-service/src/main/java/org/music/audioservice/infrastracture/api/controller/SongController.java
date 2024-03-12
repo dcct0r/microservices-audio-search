@@ -36,8 +36,8 @@ public class SongController {
     @PostMapping(value = "/", consumes = "application/json")
     public ResponseEntity<Song> addSong(@RequestBody SongDto songDto) {
         Song song = songService.save(Song.builder()
-                .songName(songDto.getSongName())
-                .authorName(songDto.getAuthorName())
+                .title(songDto.getTitle())
+                .author(songDto.getAuthor())
                 .description(songDto.getDescription())
                 .build());
         return new ResponseEntity<>(song, HttpStatus.CREATED);

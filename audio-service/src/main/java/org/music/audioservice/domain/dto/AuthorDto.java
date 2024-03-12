@@ -8,8 +8,8 @@ import java.util.Date;
 @Getter
 @Setter
 public class AuthorDto {
-    private String firstName;
-    private String lastName;
+    private String firstname;
+    private String lastname;
     private String citizenship;
     private Integer careerStart;
     private Date birthday;

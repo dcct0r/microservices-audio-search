@@ -9,14 +9,14 @@
             <column name="song_id" type="uuid">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="song_name" type="varchar(100)">
+            <column name="title" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="author_name" type="varchar(100)">
+            <column name="author" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
             <column name="description" type="text"/>
-            <column name="published_date" type="timestamp" defaultValueComputed="current_timestamp"/>
+            <column name="published" type="timestamp" defaultValueComputed="current_timestamp"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

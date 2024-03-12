@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SongDto {
-    private String songName;
-    private String authorName;
+    private String title;
+    private String author;
     private String description;
 }

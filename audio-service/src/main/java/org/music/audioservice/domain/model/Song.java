@@ -25,18 +25,18 @@ public class Song {
     private UUID id;
 
     @NotNull
-    @Column(name = "song_name")
-    private String songName;
+    @Column(name = "title")
+    private String title;
 
     @NotNull
-    @Column(name = "author_name")
-    private String authorName;
+    @Column(name = "author")
+    private String author;
 
     @Column(name = "description")
     private String description;
 
     @NotNull
     @CreationTimestamp
-    @Column(name = "published_date")
-    private Date publishedDate;
+    @Column(name = "published")
+    private Date published;
 }

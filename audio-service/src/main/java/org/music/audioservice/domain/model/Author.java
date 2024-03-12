@@ -24,11 +24,11 @@ public class Author {
     private UUID id;
 
     @NotNull
-    @Column(name = "first_name")
+    @Column(name = "firstname")
     private String firstName;
 
     @NotNull
-    @Column(name = "last_name")
+    @Column(name = "lastname")
     private String lastName;
 
     @Column(name = "citizenship")

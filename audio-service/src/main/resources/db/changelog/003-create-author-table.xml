@@ -9,10 +9,10 @@
             <column name="author_id" type="uuid">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="first_name" type="varchar(100)">
+            <column name="firstname" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_name" type="varchar(100)">
+            <column name="lastname" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
             <column name="citizenship" type="varchar(100)"/>
