@@ -11,8 +11,8 @@
     <groupId>org.music</groupId>
     <artifactId>search-audio-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>search-lyrics-service</name>
-    <description>search-lyrics-service</description>
+    <name>search-audio-service</name>
+    <description>search-audio-service</description>
     <packaging>jar</packaging>
     <properties>
         <java.version>17</java.version>
