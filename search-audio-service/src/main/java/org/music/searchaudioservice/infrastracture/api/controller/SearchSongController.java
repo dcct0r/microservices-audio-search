@@ -20,13 +20,13 @@ public class SearchSongController {
         this.songService = songService;
     }
 
-    @GetMapping("/{author}/{title}")
+    @RequestMapping(value = "/{author}/{title}", method = RequestMethod.GET)
     public ResponseEntity<Song> getSongByAuthorAndTitle(@PathVariable String author,
                                                         @PathVariable String title) {
         return new ResponseEntity<>(songService.findSongByAuthorAndTitle(author, title), HttpStatus.OK);
     }
 
-    @GetMapping("/{title}")
+    @RequestMapping(value = "/{title}", method = RequestMethod.GET)
     public ResponseEntity<Optional<Song>> getSongsByTitle(@PathVariable String title) {
         return new ResponseEntity<>(songService.findSongsByTitle(title), HttpStatus.OK);
     }

@@ -23,17 +23,17 @@ public class SongController {
         this.songService = songService;
     }
 
-    @GetMapping("/all")
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<Song>> getAllSongs() {
         return new ResponseEntity<>(songService.getAllSongs(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Optional<Song>> getSongById(@PathVariable UUID id) {
         return new ResponseEntity<>(songService.getSongById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/", consumes = "application/json")
+    @RequestMapping(value = "/", consumes = "application/json",method = RequestMethod.POST)
     public ResponseEntity<Song> addSong(@RequestBody SongDto songDto) {
         Song song = songService.save(Song.builder()
                 .title(songDto.getTitle())
@@ -43,7 +43,7 @@ public class SongController {
         return new ResponseEntity<>(song, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> removeSongById(@PathVariable UUID id) {
         songService.removeById(id);
         return new ResponseEntity<>(HttpStatus.OK);

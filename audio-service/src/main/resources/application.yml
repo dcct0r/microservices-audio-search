@@ -2,9 +2,9 @@ spring:
   application:
     name: audio-service
   datasource:
-    url: jdbc:postgresql://localhost:3030/music_lover
+    url: jdbc:postgresql://localhost:3030/music_hub
     username: roman
-    password: 6666
+    password: 1111
     driver-class-name: org.postgresql.Driver
   jpa:
     show-sql: true

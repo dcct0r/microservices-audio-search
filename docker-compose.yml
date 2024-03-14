@@ -1,13 +1,50 @@
 version: "3.8"
+
 services:
   postgres:
     image: postgres:16.0
-    container_name: audio_service_container
     environment:
-      POSTGRES_DB: "music_lover"
-      POSTGRES_USER: "roman"
-      POSTGRES_PASSWORD: "6666"
+      POSTGRES_DB: music_hub
+      POSTGRES_USER: roman
+      POSTGRES_PASSWORD: 1111
     volumes:
-      - ./db-postgres/postgres-data:/var/lib/postgresql/data
+      - ./postgres_data:/var/lib/postgresql/data
     ports:
       - "3030:5432"
+
+  keycloak-postgres:
+    image: postgres:16.0
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    networks:
+      - keycloak-network
+    ports:
+      - "5432:5432"
+
+  keycloak:
+    image: bitnami/keycloak:23.0.7
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: keycloak-postgres
+      DB_SCHEMA: public
+      DB_DATABASE: keycloak
+      DB_USER: admin
+      DB_PASSWORD: admin
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8181:8080"
+    networks:
+      - keycloak-network
+    depends_on:
+      - keycloak-postgres
+
+networks:
+  keycloak-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local

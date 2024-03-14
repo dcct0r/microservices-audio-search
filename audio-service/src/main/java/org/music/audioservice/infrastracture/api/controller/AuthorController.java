@@ -24,17 +24,17 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    @GetMapping("/all")
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<Author>> getAllAuthors() {
         return new ResponseEntity<>(authorService.getAllAuthors(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Optional<Author>> getAuthorById(@PathVariable UUID id) {
         return new ResponseEntity<>(authorService.getAuthorById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/", consumes = "application/json")
+    @RequestMapping(value = "/", consumes = "application/json",method = RequestMethod.POST)
     public ResponseEntity<Author> addAuthor(@RequestBody AuthorDto authorDto) {
         Author author = authorService.save(Author.builder()
                 .firstName(authorDto.getFirstname())
@@ -48,7 +48,7 @@ public class AuthorController {
         return new ResponseEntity<>(author, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> removeAuthorById(@PathVariable UUID id) {
         authorService.removeById(id);
         return new ResponseEntity<>(HttpStatus.OK);
