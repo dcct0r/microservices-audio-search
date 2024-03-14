@@ -7,5 +7,7 @@ services:
       POSTGRES_DB: "music_lover"
       POSTGRES_USER: "roman"
       POSTGRES_PASSWORD: "6666"
+    volumes:
+      - ./db-postgres/postgres-data:/var/lib/postgresql/data
     ports:
       - "3030:5432"

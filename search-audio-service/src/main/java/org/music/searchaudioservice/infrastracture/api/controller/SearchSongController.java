@@ -5,10 +5,7 @@ import org.music.searchaudioservice.service.SearchSongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -23,13 +20,14 @@ public class SearchSongController {
         this.songService = songService;
     }
 
-    @GetMapping("/")
-    public ResponseEntity<Song> getSongByAuthorAndTitle(@RequestBody String author, String title) {
+    @GetMapping("/{author}/{title}")
+    public ResponseEntity<Song> getSongByAuthorAndTitle(@PathVariable String author,
+                                                        @PathVariable String title) {
         return new ResponseEntity<>(songService.findSongByAuthorAndTitle(author, title), HttpStatus.OK);
     }
 
-    @GetMapping("/title")
-    public ResponseEntity<Optional<Song>> getSongsByTitle(@RequestBody String title) {
+    @GetMapping("/{title}")
+    public ResponseEntity<Optional<Song>> getSongsByTitle(@PathVariable String title) {
         return new ResponseEntity<>(songService.findSongsByTitle(title), HttpStatus.OK);
     }
 }

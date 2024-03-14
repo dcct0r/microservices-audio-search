@@ -10,6 +10,9 @@ spring:
         - id: search-audio-service
           uri: lb://SEARCH-AUDIO-SERVICE
           predicates: Path=/search/**
+#        - id: notification-service
+#          uri: lb://NOTIFACTION-SERVICE
+#          predicates: Path/subscription/**
 
   security:
     oauth2:
