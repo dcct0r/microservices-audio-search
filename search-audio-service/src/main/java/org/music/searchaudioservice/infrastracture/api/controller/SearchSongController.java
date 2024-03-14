@@ -1,6 +1,6 @@
 package org.music.searchaudioservice.infrastracture.api.controller;
 
-import org.music.searchaudioservice.domain.model.Song;
+import org.music.audioservice.domain.model.Song;
 import org.music.searchaudioservice.service.SearchSongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

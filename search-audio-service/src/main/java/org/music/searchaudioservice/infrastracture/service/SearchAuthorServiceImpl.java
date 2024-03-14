@@ -1,6 +1,6 @@
 package org.music.searchaudioservice.infrastracture.service;
 
-import org.music.searchaudioservice.domain.model.Author;
+import org.music.audioservice.domain.model.Author;
 import org.music.searchaudioservice.domain.repository.SearchAuthorRepository;
 import org.music.searchaudioservice.handler.errors.ErrorDescription;
 import org.music.searchaudioservice.handler.exceptions.NotFoundException;

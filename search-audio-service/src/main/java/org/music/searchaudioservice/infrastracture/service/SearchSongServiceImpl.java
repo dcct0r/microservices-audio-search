@@ -1,6 +1,6 @@
 package org.music.searchaudioservice.infrastracture.service;
 
-import org.music.searchaudioservice.domain.model.Song;
+import org.music.audioservice.domain.model.Song;
 import org.music.searchaudioservice.domain.repository.SearchSongRepository;
 import org.music.searchaudioservice.handler.errors.ErrorDescription;
 import org.music.searchaudioservice.handler.exceptions.NotFoundException;

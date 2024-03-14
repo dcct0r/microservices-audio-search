@@ -1,6 +1,6 @@
 package org.music.searchaudioservice.domain.repository;
 
-import org.music.searchaudioservice.domain.model.Author;
+import org.music.audioservice.domain.model.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

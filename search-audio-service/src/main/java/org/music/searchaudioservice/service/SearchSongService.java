@@ -1,6 +1,7 @@
 package org.music.searchaudioservice.service;
 
-import org.music.searchaudioservice.domain.model.Song;
+
+import org.music.audioservice.domain.model.Song;
 
 import java.util.Optional;
 
