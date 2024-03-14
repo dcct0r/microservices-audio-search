@@ -4,9 +4,12 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
+    <property name="uuid_type" value="uuid" dbms="postgresql"/>
+    <property name="uuid_function" value="gen_random_uuid()" dbms="postgresql"/>
+
     <changeSet id="create-author-table" author="roman">
         <createTable tableName="author" schemaName="tracks">
-            <column name="author_id" type="uuid">
+            <column name="author_id" type="${uuid_type}" defaultValueComputed="${uuid_function}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="firstname" type="varchar(100)">
@@ -16,7 +19,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="citizenship" type="varchar(100)"/>
-            <column name="career_start" type="date">
+            <column name="career_start" type="int">
                 <constraints nullable="false"/>
             </column>
             <column name="birthday" type="date"/>
