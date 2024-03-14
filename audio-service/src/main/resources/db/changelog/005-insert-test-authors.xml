@@ -5,6 +5,50 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="insert-test-authors" author="roman">
-
+        <insert tableName="author">
+            <column name="firstname" value="Louis"/>
+            <column name="lastname" value="Armstrong"/>
+            <column name="citizenship" value="U.S."/>
+            <column name="career_start" value="1919"/>
+            <column name="birthday" value="1901:07:04"/>
+            <column name="male" value="Man"/>
+            <column name="genre" value="Jazz"/>
+        </insert>
+        <insert tableName="author">
+            <column name="firstname" value="Ray"/>
+            <column name="lastname" value="Brown Jr."/>
+            <column name="citizenship" value="U.S."/>
+            <column name="career_start" value="1971"/>
+            <column name="birthday" value="1949:07:13"/>
+            <column name="male" value="Man"/>
+            <column name="genre" value="Jazz"/>
+        </insert>
+        <insert tableName="author">
+            <column name="firstname" value="Jim"/>
+            <column name="lastname" value="Jackson"/>
+            <column name="citizenship" value="U.S."/>
+            <column name="career_start" value="1905"/>
+            <column name="birthday" value="1876:06:10"/>
+            <column name="male" value="Man"/>
+            <column name="genre" value="Country blues"/>
+        </insert>
+        <insert tableName="author">
+            <column name="firstname" value="Mary"/>
+            <column name="lastname" value="Johnson"/>
+            <column name="citizenship" value="U.S."/>
+            <column name="career_start" value="1920"/>
+            <column name="birthday" value="1898:03:29"/>
+            <column name="male" value="Female"/>
+            <column name="genre" value="Country blues"/>
+        </insert>
+        <insert tableName="author">
+            <column name="firstname" value="Freddie"/>
+            <column name="lastname" value="Mercury"/>
+            <column name="citizenship" value="Sultanate of Zanzibar"/>
+            <column name="career_start" value="1969"/>
+            <column name="birthday" value="1946:09:05"/>
+            <column name="male" value="Man"/>
+            <column name="genre" value="Rock"/>
+        </insert>
     </changeSet>
 </databaseChangeLog>

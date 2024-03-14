@@ -5,6 +5,32 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="insert-test-songs" author="roman">
-
+        <insert tableName="music">
+            <column name="title" value="What a Wonderful World"/>
+            <column name="author" value="Louis Armstrong"/>
+            <column name="description" value="One of the most popular song"/>
+        </insert>
+        <insert tableName="music">
+            <column name="title" value="Mercy Mercy Mercy"/>
+            <column name="author" value="Ray Brown Jr."/>
+            <column name="description" value="'Mercy, Mercy, Mercy' is a jazz song written by Joe Zawinul
+            (lyrics by Gail Fisher) in 1966 for Cannonball Adderley and which appears on his album Mercy, Mercy, Mercy!
+            Live at 'The Club'. The song is the title track of the album and became a surprise hit in February 1967."/>
+        </insert>
+        <insert tableName="music">
+            <column name="title" value="Old Dog Blue"/>
+            <column name="author" value="Jim Jackson"/>
+            <column name="description" value="No description"/>
+        </insert>
+        <insert tableName="music">
+            <column name="title" value="Morning Sun Blues"/>
+            <column name="author" value="Mary Johnson"/>
+            <column name="description" value="Song was written in 1930"/>
+        </insert>
+        <insert tableName="music">
+            <column name="title" value="Bohemian Rhapsody"/>
+            <column name="author" value="Queen"/>
+            <column name="description" value=""/>
+        </insert>
     </changeSet>
 </databaseChangeLog>
