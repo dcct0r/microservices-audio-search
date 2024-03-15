@@ -7,8 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "author", schema = "tracks")
@@ -22,6 +21,13 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "author_id")
     private UUID id;
+
+    @OneToMany(
+            mappedBy = "author",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
+    Set<Song> songSet = new HashSet<>();
 
     @NotNull
     @Column(name = "firstname")

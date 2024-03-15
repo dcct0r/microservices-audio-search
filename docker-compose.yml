@@ -3,6 +3,7 @@ version: "3.8"
 services:
   postgres:
     image: postgres:16.0
+    container_name: audio_service_db
     environment:
       POSTGRES_DB: music_hub
       POSTGRES_USER: roman
@@ -14,17 +15,17 @@ services:
 
   keycloak-postgres:
     image: postgres:16.0
+    container_name: keycloak_postgres_db
     environment:
       POSTGRES_DB: keycloak
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
-    networks:
-      - keycloak-network
     ports:
       - "5432:5432"
 
   keycloak:
     image: bitnami/keycloak:23.0.7
+    container_name: keycloak_container
     environment:
       DB_VENDOR: POSTGRES
       DB_ADDR: keycloak-postgres
@@ -36,15 +37,29 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: admin
     ports:
       - "8181:8080"
-    networks:
-      - keycloak-network
     depends_on:
       - keycloak-postgres
 
-networks:
-  keycloak-network:
-    driver: bridge
+  zookeeper:
+    image: bitnami/kafka:3.7.0
+    container_name: zookeeper_container
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "22181:2181"
 
-volumes:
-  postgres_data:
-    driver: local
+  kafka:
+    image: bitnami/kafka:3.7.0
+    container_name: kafka_container
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    depends_on:
+      - zookeeper
+    ports:
+      - "29092:29092"

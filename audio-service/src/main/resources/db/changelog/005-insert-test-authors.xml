@@ -6,6 +6,7 @@
 
     <changeSet id="insert-test-authors" author="roman">
         <insert tableName="author" schemaName="tracks">
+            <column name="author_id" value="2fc4be37-bbb7-4850-ba0e-dc5b8c18afd0"/>
             <column name="firstname" value="Louis"/>
             <column name="lastname" value="Armstrong"/>
             <column name="citizenship" value="U.S."/>
@@ -15,6 +16,7 @@
             <column name="genre" value="Jazz"/>
         </insert>
         <insert tableName="author" schemaName="tracks">
+            <column name="author_id" value="cbbdc7c9-eb29-4553-8a83-a9ea0040f0b4"/>
             <column name="firstname" value="Ray"/>
             <column name="lastname" value="Brown Jr."/>
             <column name="citizenship" value="U.S."/>
@@ -24,6 +26,7 @@
             <column name="genre" value="Jazz"/>
         </insert>
         <insert tableName="author" schemaName="tracks">
+            <column name="author_id" value="05244b56-9dd9-43ec-a6f6-4d945f35eb08"/>
             <column name="firstname" value="Jim"/>
             <column name="lastname" value="Jackson"/>
             <column name="citizenship" value="U.S."/>
@@ -32,6 +35,7 @@
             <column name="genre" value="Country blues"/>
         </insert>
         <insert tableName="author" schemaName="tracks">
+            <column name="author_id" value="5aa618ac-5766-4487-b58e-25412c82d653"/>
             <column name="firstname" value="Mary"/>
             <column name="lastname" value="Johnson"/>
             <column name="career_start" value="1920"/>
@@ -40,6 +44,7 @@
             <column name="genre" value="Country blues"/>
         </insert>
         <insert tableName="author" schemaName="tracks">
+            <column name="author_id" value="3ec25fdb-a404-4e26-ad73-8cd730a7fee6"/>
             <column name="firstname" value="Freddie"/>
             <column name="lastname" value="Mercury"/>
             <column name="citizenship" value="Sultanate of Zanzibar"/>

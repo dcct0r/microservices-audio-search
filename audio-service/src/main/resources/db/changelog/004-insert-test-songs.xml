@@ -6,11 +6,13 @@
 
     <changeSet id="insert-test-songs" author="roman">
         <insert tableName="music" schemaName="tracks">
+            <column name="author_id" value="2fc4be37-bbb7-4850-ba0e-dc5b8c18afd0"/>
             <column name="title" value="What a Wonderful World"/>
             <column name="author" value="Louis Armstrong"/>
             <column name="description" value="One of the most popular song"/>
         </insert>
         <insert tableName="music" schemaName="tracks">
+            <column name="author_id" value="cbbdc7c9-eb29-4553-8a83-a9ea0040f0b4"/>
             <column name="title" value="Mercy Mercy Mercy"/>
             <column name="author" value="Ray Brown Jr."/>
             <column name="description" value="'Mercy, Mercy, Mercy' is a jazz song written by Joe Zawinul
@@ -18,19 +20,40 @@
             Live at 'The Club'. The song is the title track of the album and became a surprise hit in February 1967."/>
         </insert>
         <insert tableName="music" schemaName="tracks">
+            <column name="author_id" value="05244b56-9dd9-43ec-a6f6-4d945f35eb08"/>
             <column name="title" value="Old Dog Blue"/>
             <column name="author" value="Jim Jackson"/>
             <column name="description" value="No description"/>
         </insert>
         <insert tableName="music" schemaName="tracks">
+            <column name="author_id" value="5aa618ac-5766-4487-b58e-25412c82d653"/>
             <column name="title" value="Morning Sun Blues"/>
             <column name="author" value="Mary Johnson"/>
             <column name="description" value="Song was written in 1930"/>
         </insert>
         <insert tableName="music" schemaName="tracks">
+            <column name="author_id" value="3ec25fdb-a404-4e26-ad73-8cd730a7fee6"/>
             <column name="title" value="Bohemian Rhapsody"/>
             <column name="author" value="Queen"/>
             <column name="description" value=""/>
+        </insert>
+        <insert tableName="music" schemaName="tracks">
+            <column name="author_id" value="2fc4be37-bbb7-4850-ba0e-dc5b8c18afd0"/>
+            <column name="title" value="Cheek To Cheek"/>
+            <column name="author" value="Louis Armstrong"/>
+            <column name="description" value="One of the most popular song"/>
+        </insert>
+        <insert tableName="music" schemaName="tracks">
+            <column name="author_id" value="2fc4be37-bbb7-4850-ba0e-dc5b8c18afd0"/>
+            <column name="title" value="Hello, Dolly"/>
+            <column name="author" value="Louis Armstrong"/>
+            <column name="description" value="No description"/>
+        </insert>
+        <insert tableName="music" schemaName="tracks">
+            <column name="author_id" value="2fc4be37-bbb7-4850-ba0e-dc5b8c18afd0"/>
+            <column name="title" value="La Vie En Rose"/>
+            <column name="author" value="Louis Armstrong"/>
+            <column name="description" value="My favorite song"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

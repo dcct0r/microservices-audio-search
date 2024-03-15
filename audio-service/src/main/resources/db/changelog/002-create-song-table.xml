@@ -12,6 +12,14 @@
             <column name="song_id" type="${uuid_type}" defaultValueComputed="${uuid_function}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="author_id" type="${uuid_type}" defaultValueComputed="${uuid_function}">
+                <constraints nullable="false"
+                             foreignKeyName="fk_author_music"
+                             referencedTableSchemaName="tracks"
+                             referencedTableName="author"
+                             referencedColumnNames="author_id"
+                />
+            </column>
             <column name="title" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>

@@ -5,8 +5,8 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
 
     <include file="001-create-new-schema.xml" relativeToChangelogFile="true"/>
-    <include file="002-create-song-table.xml" relativeToChangelogFile="true"/>
     <include file="003-create-author-table.xml" relativeToChangelogFile="true"/>
-    <include file="004-insert-test-songs.xml" relativeToChangelogFile="true"/>
+    <include file="002-create-song-table.xml" relativeToChangelogFile="true"/>
     <include file="005-insert-test-authors.xml" relativeToChangelogFile="true"/>
+    <include file="004-insert-test-songs.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
