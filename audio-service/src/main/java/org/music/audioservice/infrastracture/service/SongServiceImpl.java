@@ -2,7 +2,7 @@ package org.music.audioservice.infrastracture.service;
 
 import org.music.audioservice.domain.model.Song;
 import org.music.audioservice.domain.repository.SongRepository;
-import org.music.audioservice.handler.errors.TextMessages;
+import org.music.audioservice.handler.errors.ErrorDescription;
 import org.music.audioservice.handler.exceptions.SongNotFoundException;
 import org.music.audioservice.handler.exceptions.SongExistException;
 import org.music.audioservice.service.SongService;
@@ -26,7 +26,7 @@ public class SongServiceImpl implements SongService {
     @Override
     public List<Song> getAllSongs() {
         if (songRepository.count() == 0) {
-            throw new SongNotFoundException(TextMessages.emptySongList);
+            throw new SongNotFoundException(ErrorDescription.emptySongList);
         }
         return songRepository.findAll();
     }
@@ -34,7 +34,7 @@ public class SongServiceImpl implements SongService {
     @Override
     public Optional<Song> getSongById(UUID id) {
         if (!songRepository.existsById(id)) {
-            throw new SongNotFoundException(TextMessages.songNotFoundException);
+            throw new SongNotFoundException(ErrorDescription.songNotFoundException);
         }
         return songRepository.findById(id);
     }
@@ -42,16 +42,24 @@ public class SongServiceImpl implements SongService {
     @Override
     public Song save(Song song) {
         if (songRepository.existsById(song.getId())) {
-            throw new SongExistException(TextMessages.songExistException);
+            throw new SongExistException(ErrorDescription.songExistException);
         }
         songRepository.save(song);
         return song;
     }
 
     @Override
+    public Song edit(UUID id, String description) {
+        return songRepository.findById(id).map(s -> {
+                    s.setDescription(description);
+                    return songRepository.save(s);
+                }).orElseThrow(() -> new SongNotFoundException(ErrorDescription.songNotFoundException));
+    }
+
+    @Override
     public void removeById(UUID id) {
         if (!songRepository.existsById(id)) {
-            throw new SongNotFoundException(TextMessages.emptySongList);
+            throw new SongNotFoundException(ErrorDescription.emptySongList);
         }
         songRepository.deleteById(id);
     }

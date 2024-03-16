@@ -9,9 +9,9 @@ spring:
   jpa:
     show-sql: true
     generate-ddl: false
-
   liquibase:
-    change-log: db/changelog/changelog-master.xml
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    default-schema: public
 
 server:
   port: 8083

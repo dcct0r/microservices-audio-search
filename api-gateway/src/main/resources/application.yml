@@ -11,11 +11,11 @@ spring:
           uri: lb://SEARCH-AUDIO-SERVICE
           predicates: Path=/search/**
 
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri:
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri:
 
 server:
   port: 8088

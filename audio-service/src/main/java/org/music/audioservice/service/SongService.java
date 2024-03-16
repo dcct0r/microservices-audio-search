@@ -10,5 +10,6 @@ public interface SongService {
     List<Song> getAllSongs();
     Optional<Song> getSongById(UUID id);
     Song save(Song song);
+    Song edit(UUID id, String description);
     void removeById(UUID id);
 }

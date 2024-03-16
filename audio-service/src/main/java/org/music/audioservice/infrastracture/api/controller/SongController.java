@@ -33,7 +33,7 @@ public class SongController {
         return new ResponseEntity<>(songService.getSongById(id), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/", consumes = "application/json",method = RequestMethod.POST)
+    @RequestMapping(value = "/", consumes = "application/json", method = RequestMethod.POST)
     public ResponseEntity<Song> addSong(@RequestBody SongDto songDto) {
         Song song = songService.save(Song.builder()
                 .title(songDto.getTitle())
@@ -41,6 +41,13 @@ public class SongController {
                 .description(songDto.getDescription())
                 .build());
         return new ResponseEntity<>(song, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Void> editSong(@PathVariable UUID id,
+                                         @RequestBody String description) {
+        songService.edit(id, description);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
