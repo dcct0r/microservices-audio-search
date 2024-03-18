@@ -13,32 +13,32 @@ services:
     ports:
       - "3030:5432"
 
-  keycloak-postgres:
-    image: postgres:16.0
-    container_name: keycloak_postgres_db
-    environment:
-      POSTGRES_DB: keycloak
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-    ports:
-      - "5432:5432"
-
-  keycloak:
-    image: bitnami/keycloak:23.0.7
-    container_name: keycloak_container
-    environment:
-      DB_VENDOR: POSTGRES
-      DB_ADDR: keycloak-postgres
-      DB_SCHEMA: public
-      DB_DATABASE: keycloak
-      DB_USER: admin
-      DB_PASSWORD: admin
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
-    ports:
-      - "8181:8080"
-    depends_on:
-      - keycloak-postgres
+#  keycloak-postgres:
+#    image: postgres:16.0
+#    container_name: keycloak_postgres_db
+#    environment:
+#      POSTGRES_DB: keycloak
+#      POSTGRES_USER: admin
+#      POSTGRES_PASSWORD: admin
+#    ports:
+#      - "5432:5432"
+#
+#  keycloak:
+#    image: bitnami/keycloak:23.0.7
+#    container_name: keycloak_container
+#    environment:
+#      DB_VENDOR: POSTGRES
+#      DB_ADDR: keycloak-postgres
+#      DB_SCHEMA: public
+#      DB_DATABASE: keycloak
+#      DB_USER: admin
+#      DB_PASSWORD: admin
+#      KEYCLOAK_ADMIN: admin
+#      KEYCLOAK_ADMIN_PASSWORD: admin
+#    ports:
+#      - "8181:8080"
+#    depends_on:
+#      - keycloak-postgres
 
   zookeeper:
     image: confluentinc/cp-zookeeper:7.6.0

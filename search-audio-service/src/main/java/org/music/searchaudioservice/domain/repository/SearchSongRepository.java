@@ -10,5 +10,6 @@ import java.util.UUID;
 @Repository
 public interface SearchSongRepository extends JpaRepository<Song, UUID> {
     Song findSongByAuthorAndTitle(String author, String title);
+    Optional<Song> findSongsByAuthor(String author);
     Optional<Song> findSongsByTitle(String title);
 }

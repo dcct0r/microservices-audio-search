@@ -3,8 +3,8 @@ package org.music.audioservice.infrastracture.service;
 import org.music.audioservice.domain.model.Song;
 import org.music.audioservice.domain.repository.SongRepository;
 import org.music.audioservice.handler.errors.ErrorDescription;
-import org.music.audioservice.handler.exceptions.SongNotFoundException;
-import org.music.audioservice.handler.exceptions.SongExistException;
+import org.music.audioservice.handler.exceptions.ConflictException;
+import org.music.audioservice.handler.exceptions.NotFoundException;
 import org.music.audioservice.service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class SongServiceImpl implements SongService {
     @Override
     public List<Song> getAllSongs() {
         if (songRepository.count() == 0) {
-            throw new SongNotFoundException(ErrorDescription.emptySongList);
+            throw new NotFoundException(ErrorDescription.emptySongList);
         }
         return songRepository.findAll();
     }
@@ -34,7 +34,7 @@ public class SongServiceImpl implements SongService {
     @Override
     public Optional<Song> getSongById(UUID id) {
         if (!songRepository.existsById(id)) {
-            throw new SongNotFoundException(ErrorDescription.songNotFoundException);
+            throw new NotFoundException(ErrorDescription.songNotFoundException);
         }
         return songRepository.findById(id);
     }
@@ -42,7 +42,7 @@ public class SongServiceImpl implements SongService {
     @Override
     public Song save(Song song) {
         if (songRepository.existsById(song.getId())) {
-            throw new SongExistException(ErrorDescription.songExistException);
+            throw new ConflictException(ErrorDescription.songExistException);
         }
         songRepository.save(song);
         return song;
@@ -53,13 +53,13 @@ public class SongServiceImpl implements SongService {
         return songRepository.findById(id).map(s -> {
                     s.setDescription(description);
                     return songRepository.save(s);
-                }).orElseThrow(() -> new SongNotFoundException(ErrorDescription.songNotFoundException));
+                }).orElseThrow(() -> new NotFoundException(ErrorDescription.songNotFoundException));
     }
 
     @Override
     public void removeById(UUID id) {
         if (!songRepository.existsById(id)) {
-            throw new SongNotFoundException(ErrorDescription.emptySongList);
+            throw new NotFoundException(ErrorDescription.emptySongList);
         }
         songRepository.deleteById(id);
     }

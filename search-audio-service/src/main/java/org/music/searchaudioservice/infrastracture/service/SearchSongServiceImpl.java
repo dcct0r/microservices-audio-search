@@ -26,6 +26,14 @@ public class SearchSongServiceImpl implements SearchSongService {
     }
 
     @Override
+    public Optional<Song> findSongsByAuthor(String author) {
+        Optional<Song> songs = songRepository.findSongsByAuthor(author);
+        return Optional.ofNullable(songs.stream()
+                .findAny()
+                .orElseThrow(() -> new NotFoundException(ErrorDescription.nameNotFoundException)));
+    }
+
+    @Override
     public Optional<Song> findSongsByTitle(String title) {
         Optional<Song> song = songRepository.findSongsByTitle(title);
         return Optional.ofNullable(song.stream()

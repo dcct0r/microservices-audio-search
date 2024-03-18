@@ -7,5 +7,4 @@ public class ErrorDescription {
     public static final String authorNotFoundException = "It seems the author you are looking for doesn't exist.";
     public static final String emptySongList = "Seems like there is no songs yet! Try to add or try it again later";
     public static final String emptyAuthorList = "Seems like there is no author's yet! Try to add or try it again later";
-
 }
