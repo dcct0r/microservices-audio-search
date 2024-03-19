@@ -13,6 +13,9 @@
 ## 🤖 How to start
 1. Clone the repository ```git clone https://github.com/dcct0r/microservices-audio-search.git```
 2. Go to the project folder and do the following:
+```
+mvn clean package -Dmaven.test.skip
+```
  ```
 docker-compose build
 ```
