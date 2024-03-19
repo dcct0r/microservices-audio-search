@@ -119,5 +119,3 @@ services:
       - SPRING_DATASOURCE_PASSWORD=1111
     ports:
       - "8081:8081"
-
-

@@ -1,0 +1,384 @@
+{
+	"info": {
+		"_postman_id": "75cad1ac-bfdd-428e-955f-66a882f73b4e",
+		"name": "Microservices audio search",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "26698045"
+	},
+	"item": [
+		{
+			"name": "Authors",
+			"item": [
+				{
+					"name": "Find by first name and last name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/search/authors/:firstname/:lastname",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"search",
+								"authors",
+								":firstname",
+								":lastname"
+							],
+							"variable": [
+								{
+									"key": "firstname",
+									"value": "Louis"
+								},
+								{
+									"key": "lastname",
+									"value": "Armstrong"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by first name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/search/authors/:firstname",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"search",
+								"authors",
+								":firstname"
+							],
+							"variable": [
+								{
+									"key": "firstname",
+									"value": "Louis"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by genre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/search/authors/:genre",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"search",
+								"authors",
+								":genre"
+							],
+							"variable": [
+								{
+									"key": "genre",
+									"value": "Rock"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by male",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/search/authors/:male",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"search",
+								"authors",
+								":male"
+							],
+							"variable": [
+								{
+									"key": "male",
+									"value": "Man"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by citizenship",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/search/authors/:citizenship",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"search",
+								"authors",
+								":citizenship"
+							],
+							"variable": [
+								{
+									"key": "citizenship",
+									"value": "U.S."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all authors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8088/catalog/authors/all"
+					},
+					"response": []
+				},
+				{
+					"name": "Find by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8088/catalog/authors/cbbdc7c9-eb29-4553-8a83-a9ea0040f0b4"
+					},
+					"response": []
+				},
+				{
+					"name": "Add new author",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "http://localhost:8088/catalog/authors/"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete author by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8088/catalog/authors/cbbdc7c9-eb29-4553-8a83-a9ea0040f0b4"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Songs",
+			"item": [
+				{
+					"name": "Add new songs",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"tokenName": "token3",
+								"grant_type": "client_credentials",
+								"password": "1111",
+								"username": "test.user",
+								"scope": "openid offline_access",
+								"clientSecret": "Q6ANNgJhisXn0U2CRckHj8eqfCR47Ry0",
+								"clientId": "springsecurity",
+								"accessTokenUrl": "http://localhost:8080/realms/musichub/protocol/openid-connect/token",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"author\":\"alskj\",\n    \"title\": \"helo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8088/search/songs/"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all songs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8088/catalog/songs/all"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete song by id",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": {
+								"tokenName": "audio-search-token",
+								"scope": "openid offline_access",
+								"clientSecret": "Q6ANNgJhisXn0U2CRckHj8eqfCR47Ry0",
+								"clientId": "springsecurity",
+								"accessTokenUrl": "http://localhost:8080/realms/musichub/protocol/openid-connect/token",
+								"grant_type": "client_credentials",
+								"addTokenTo": "header"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8088/catalog/songs/{id}"
+					},
+					"response": []
+				},
+				{
+					"name": "Get song by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8088/catalog/songs/9d4a05f2-d166-4d94-ba9f-e040e0f322fa"
+					},
+					"response": []
+				},
+				{
+					"name": "Search song request by title",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/search/songs/:title",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"search",
+								"songs",
+								":title"
+							],
+							"variable": [
+								{
+									"key": "title",
+									"value": "What a Wonderful World"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search song request by author and title",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/search/songs/:author/:title",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"search",
+								"songs",
+								":author",
+								":title"
+							],
+							"variable": [
+								{
+									"key": "author",
+									"value": "Louis Armstrong"
+								},
+								{
+									"key": "title",
+									"value": "La Vie En Rose"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put request description",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\":\"This is PUT request test!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8088/catalog/songs/edit/9e21a3c0-1c16-4b2a-a00a-d26ed8c7a8c9"
+					},
+					"response": []
+				},
+				{
+					"name": "Subscribe to the track",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/catalog/songs/subscription/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"catalog",
+								"songs",
+								"subscription",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5aa618ac-5766-4487-b58e-25412c82d653"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
