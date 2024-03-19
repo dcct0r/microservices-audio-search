@@ -1,4 +1,4 @@
-# Rest API for searching audio
+# 🎼 Rest API for searching audio
 
 ## Current stack
 - Java 17
@@ -7,11 +7,11 @@
 - Hibernate ORM, Liquibase, Kafka
 - Docker/Docker-compose
 
-## What is done
-
 ## Architecture
+![arch](https://github.com/dcct0r/microservices-audio-search/assets/111187206/eae4a6bd-cb95-4e63-a7c0-496ea8fb7ae6)
 
-## How to start
+
+## 🤖 How to start
 1. Clone the repository ```git clone https://github.com/dcct0r/microservices-audio-search.git```
 2. Go to the project folder and do the following:
  ```
@@ -22,7 +22,7 @@ docker-compose up
 ```
 4. Import the postman collection into Postman (Optional)
 5. The service is available at http://localhost:8088
-## Endpoints
+## 🚩 Endpoints
 ### ✅ Microservice audio-service
 ### Endpoins for authors
 GET request
