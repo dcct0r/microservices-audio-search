@@ -30,6 +30,7 @@ docker-compose up
 - GET request
 ```
 /catalog/authors/all
+
 /catalog/authors/{id}
 ```
 - POST request
@@ -44,7 +45,9 @@ docker-compose up
 - GET request
 ```
 /catalog/songs/all
+
 /catalog/songs/{id}
+
 /catalog/songs/subscription/{id}
 ```
 - POST request
@@ -63,8 +66,12 @@ docker-compose up
 - GET request
 ```
 /search/authors/{firstname}/{lastname}
+
 /search/authors/{firstname}
+
 /search/authors/{citizenship}
+
 /search/authors/{genre}
+
 /search/authors/{male}
 ```
