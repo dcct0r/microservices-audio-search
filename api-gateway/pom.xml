@@ -12,7 +12,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>api-gateway</name>
     <description>api-gateway</description>
-    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>

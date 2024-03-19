@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class SubConsumerService {
-    @KafkaListener(topics = "songSubscription", containerFactory = "listenerContainerFactory")
+    @KafkaListener(topics = "songSubscription", containerFactory = "listenerContainerFactory", groupId = "subscription")
     public void handleSongSubscription(SongSubscriptionEvent songSubscriptionEvent) {
         log.info("Got message <{}> ", songSubscriptionEvent);
         //some email sender logic

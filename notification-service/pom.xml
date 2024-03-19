@@ -12,7 +12,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>notification-service</name>
     <description>notification-service</description>
-    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -27,8 +26,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>6.1.5</version>
         </dependency>
 
         <dependency>

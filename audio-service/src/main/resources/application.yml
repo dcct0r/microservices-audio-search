@@ -13,12 +13,13 @@ spring:
     change-log: classpath:db/changelog/changelog-master.xml
     default-schema: public
   kafka:
-    topic:
-      name: songSubscription
     template:
-      default-topic: songSubscription
+      default-topic: "songSubscription"
     producer:
       bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
 
 server:
   port: 8083
