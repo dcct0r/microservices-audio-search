@@ -1,13 +1,13 @@
 # 🎼 Rest API for searching audio
 
-## Current stack
+## ⌨️ Current stack
 - Java 17
 - Spring Boot, Spring Data, Spring Cloud Netflix
 - PostgreSQL
 - Hibernate ORM, Liquibase, Kafka
 - Docker/Docker-compose
 
-## Architecture
+## ⚙️ Architecture
 ![arch](https://github.com/dcct0r/microservices-audio-search/assets/111187206/ca175a47-62e7-492e-98e0-a96063d8f930)
 
 ## 🤖 How to start
@@ -24,40 +24,40 @@ docker-compose up
 ## 🚩 Endpoints
 ### ✅ Microservice audio-service
 ### Endpoins for authors
-GET request
+- GET request
 ```
 /catalog/authors/all
 /catalog/authors/{id}
 ```
-POST request
+- POST request
 ```
 /catalog/authors/
 ```
-DELETE request
+- DELETE request
 ```
 /catalog/authors/
 ```
 ### Endpoins for songs
-GET request
+- GET request
 ```
 /catalog/songs/all
 /catalog/songs/{id}
 /catalog/songs/subscription/{id}
 ```
-POST request
+- POST request
 ```
 /catalog/songs/
 ```
-PUT request
+- PUT request
 ```
 /catalog/songs/edit/{id}
 ```
-DELETE request
+- DELETE request
 ```
 /catalog/songs/{id}
 ```
 ### ✅ Microservice search-audio-service  
-GET request
+- GET request
 ```
 /search/authors/{firstname}/{lastname}
 /search/authors/{firstname}
