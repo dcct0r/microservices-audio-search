@@ -1,6 +1,17 @@
 spring:
   application:
     name: notification-service
+  datasource:
+    url: jdbc:postgresql://localhost:3030/music_hub
+    username: roman
+    password: 1111
+    driver-class-name: org.postgresql.Driver
+  kafka:
+    topic:
+      name: songSubscription
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: "subscription"
 
 server:
   port: 8081

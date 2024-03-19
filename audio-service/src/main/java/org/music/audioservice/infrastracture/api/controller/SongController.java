@@ -50,6 +50,12 @@ public class SongController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/subscription/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Void> subscribe(@PathVariable UUID id) {
+        songService.songSubscription(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> removeSongById(@PathVariable UUID id) {
         songService.removeById(id);

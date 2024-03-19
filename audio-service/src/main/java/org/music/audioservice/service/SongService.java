@@ -12,4 +12,5 @@ public interface SongService {
     Song save(Song song);
     Song edit(UUID id, String description);
     void removeById(UUID id);
+    void songSubscription(UUID id);
 }
