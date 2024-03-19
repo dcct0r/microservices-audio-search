@@ -8,8 +8,7 @@
 - Docker/Docker-compose
 
 ## Architecture
-![arch](https://github.com/dcct0r/microservices-audio-search/assets/111187206/eae4a6bd-cb95-4e63-a7c0-496ea8fb7ae6)
-
+![arch](https://github.com/dcct0r/microservices-audio-search/assets/111187206/2f3c04c3-d800-4163-a8c7-d3b19a82ec7c)
 
 ## 🤖 How to start
 1. Clone the repository ```git clone https://github.com/dcct0r/microservices-audio-search.git```
