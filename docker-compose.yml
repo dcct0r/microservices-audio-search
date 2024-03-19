@@ -62,3 +62,72 @@ services:
       - zookeeper
     ports:
       - "9092:9092"
+
+  eureka-server:
+    container_name: "eureka-server-container"
+    build:
+      context: eureka-server
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761"
+
+  api-gateway:
+    container_name: "api-gateway"
+    build:
+      context: api-gateway
+      dockerfile: Dockerfile
+    depends_on:
+      - eureka-server
+    ports:
+      - "8088:8088"
+
+  audio-service:
+    container_name: "microservice-audio"
+    build:
+      context: audio-service
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+      - kafka
+      - eureka-server
+      - api-gateway
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/music_hub
+      - SPRING_DATASOURCE_USERNAME=roman
+      - SPRING_DATASOURCE_PASSWORD=1111
+    ports:
+      - "8083:8083"
+
+#  search-audio-service:
+#    container_name: "microservice-search-audio"
+#    build:
+#      context: search-audio-service
+#      dockerfile: Dockerfile
+#    depends_on:
+#      - postgres
+#      - audio-service
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/music_hub
+#      - SPRING_DATASOURCE_USERNAME=roman
+#      - SPRING_DATASOURCE_PASSWORD=1111
+#    ports:
+#      - "8082:8082"
+#
+#  notification-service:
+#    container_name: "microservice-notification"
+#    build:
+#      context: notification-service
+#      dockerfile: Dockerfile
+#    depends_on:
+#      - postgres
+#      - kafka
+#      - audio-service
+#      - eureka-server
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/music_hub
+#      - SPRING_DATASOURCE_USERNAME=roman
+#      - SPRING_DATASOURCE_PASSWORD=1111
+#    ports:
+#      - "8081:8081"
+
+
