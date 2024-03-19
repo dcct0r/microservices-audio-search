@@ -29,11 +29,11 @@ GET request
 /catalog/authors/all
 /catalog/authors/{id}
 ```
-Post request
+POST request
 ```
 /catalog/authors/
 ```
-Delete request
+DELETE request
 ```
 /catalog/authors/
 ```
