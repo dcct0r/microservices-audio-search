@@ -29,38 +29,38 @@ docker-compose up
 ### Endpoins for authors
 - GET request
 ```
-/catalog/authors/all
+/authors/all
 
-/catalog/authors/{id}
+/authors/{id}
 ```
 - POST request
 ```
-/catalog/authors/
+/authors/
 ```
 - DELETE request
 ```
-/catalog/authors/
+/authors/
 ```
 ### Endpoins for songs
 - GET request
 ```
-/catalog/songs/all
+/songs/all
 
-/catalog/songs/{id}
+/songs/{id}
 
-/catalog/songs/subscription/{id}
+/songs/subscription/{id}
 ```
 - POST request
 ```
-/catalog/songs/
+/songs/
 ```
 - PUT request
 ```
-/catalog/songs/edit/{id}
+/songs/edit/{id}
 ```
 - DELETE request
 ```
-/catalog/songs/{id}
+/songs/{id}
 ```
 ### ✅ Microservice search-audio-service  
 - GET request
