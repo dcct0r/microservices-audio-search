@@ -48,7 +48,7 @@ docker-compose up
 
 /songs/{id}
 
-/songs/subscription/{id}
+/songs/subscriptions/{id}
 ```
 - POST request
 ```
