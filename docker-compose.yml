@@ -10,6 +10,8 @@ services:
       POSTGRES_PASSWORD: 1111
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
+    networks:
+      - microservices-network
     ports:
       - "3030:5432"
 
@@ -46,6 +48,8 @@ services:
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - microservices-network
     ports:
       - "2181:2181"
 
@@ -60,19 +64,28 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     depends_on:
       - zookeeper
+    networks:
+      - microservices-network
     ports:
       - "9092:9092"
 
   eureka-server:
-    container_name: "eureka-server-container"
+    container_name: "eureka-server"
     build: ../search_lyrics/eureka-server
+    networks:
+      - microservices-network
     ports:
       - "8761:8761"
 
   api-gateway:
     container_name: "api-gateway"
     build: ../search_lyrics/api-gateway
-    links:
+    restart: on-failure
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+    networks:
+      - microservices-network
+    depends_on:
       - eureka-server
     ports:
       - "8088:8088"
@@ -80,42 +93,59 @@ services:
   audio-service:
     container_name: "microservice-audio"
     build: ../search_lyrics/audio-service
-    links:
+    restart: on-failure
+    depends_on:
       - postgres
-      - kafka
       - eureka-server
+      - kafka
       - api-gateway
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/music_hub
       - SPRING_DATASOURCE_USERNAME=roman
       - SPRING_DATASOURCE_PASSWORD=1111
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+    networks:
+      - microservices-network
     ports:
       - "8083:8083"
 
   search-audio-service:
     container_name: "microservice-search-audio"
     build: ../search_lyrics/search-audio-service
+    restart: on-failure
     depends_on:
       - postgres
+      - eureka-server
       - audio-service
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/music_hub
       - SPRING_DATASOURCE_USERNAME=roman
       - SPRING_DATASOURCE_PASSWORD=1111
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+    networks:
+      - microservices-network
     ports:
       - "8082:8082"
 
   notification-service:
     container_name: "microservice-notification"
     build: ../search_lyrics/notification-service
+    restart: on-failure
     depends_on:
       - postgres
+      - eureka-server
       - kafka
       - audio-service
-      - eureka-server
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/music_hub
       - SPRING_DATASOURCE_USERNAME=roman
       - SPRING_DATASOURCE_PASSWORD=1111
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+    networks:
+      - microservices-network
     ports:
       - "8081:8081"
+
+networks:
+  microservices-network:
+    driver: bridge

@@ -14,7 +14,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/catalog/authors")
+@RequestMapping("/authors")
 public class AuthorController {
 
     private final AuthorService authorService;

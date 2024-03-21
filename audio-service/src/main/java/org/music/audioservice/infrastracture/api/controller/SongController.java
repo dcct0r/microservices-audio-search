@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("catalog/songs")
+@RequestMapping("/songs")
 public class SongController {
 
     private final SongService songService;
@@ -50,7 +50,7 @@ public class SongController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/subscription/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/subscriptions/{id}", method = RequestMethod.GET)
     public ResponseEntity<Void> subscribe(@PathVariable UUID id) {
         songService.songSubscription(id);
         return new ResponseEntity<>(HttpStatus.OK);
