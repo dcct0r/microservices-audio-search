@@ -4,7 +4,7 @@ import org.music.audioservice.domain.model.Song;
 import org.music.searchaudioservice.domain.repository.SearchSongRepository;
 import org.music.searchaudioservice.handler.errors.ErrorDescription;
 import org.music.searchaudioservice.handler.exceptions.NotFoundException;
-import org.music.searchaudioservice.service.SearchSongService;
+import org.music.searchaudioservice.domain.service.SearchSongService;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -21,7 +21,7 @@ public class SearchSongServiceImpl implements SearchSongService {
     @Override
     public Song findSongByAuthorAndTitle(String author, String title) {
         Song song = songRepository.findSongByAuthorAndTitle(author, title);
-        if (song == null) throw new NotFoundException(ErrorDescription.nameOrTitleNotFoundException);
+        if (song == null) throw new NotFoundException(ErrorDescription.NAME_OR_TITLE_NOT_FOUND_EXCEPTION);
         return songRepository.findSongByAuthorAndTitle(author, title);
     }
 
@@ -30,7 +30,7 @@ public class SearchSongServiceImpl implements SearchSongService {
         Optional<Song> songs = songRepository.findSongsByAuthor(author);
         return Optional.ofNullable(songs.stream()
                 .findAny()
-                .orElseThrow(() -> new NotFoundException(ErrorDescription.nameNotFoundException)));
+                .orElseThrow(() -> new NotFoundException(ErrorDescription.NAME_NOT_FOUND_EXCEPTION)));
     }
 
     @Override
@@ -38,6 +38,6 @@ public class SearchSongServiceImpl implements SearchSongService {
         Optional<Song> song = songRepository.findSongsByTitle(title);
         return Optional.ofNullable(song.stream()
                 .findAny()
-                .orElseThrow(() -> new NotFoundException(ErrorDescription.titleNotFoundException)));
+                .orElseThrow(() -> new NotFoundException(ErrorDescription.TITLE_NOT_FOUND_EXCEPTION)));
     }
 }

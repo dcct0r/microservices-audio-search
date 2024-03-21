@@ -2,8 +2,7 @@ package org.music.audioservice.infrastracture.api.controller;
 
 import org.music.audioservice.domain.dto.AuthorDto;
 import org.music.audioservice.domain.model.Author;
-import org.music.audioservice.domain.model.Author;
-import org.music.audioservice.service.AuthorService;
+import org.music.audioservice.domain.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

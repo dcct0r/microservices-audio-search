@@ -5,7 +5,7 @@ import org.music.audioservice.domain.repository.AuthorRepository;
 import org.music.audioservice.handler.errors.ErrorDescription;
 import org.music.audioservice.handler.exceptions.ConflictException;
 import org.music.audioservice.handler.exceptions.NotFoundException;
-import org.music.audioservice.service.AuthorService;
+import org.music.audioservice.domain.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public List<Author> getAllAuthors() {
         if (authorRepository.count() == 0) {
-            throw new NotFoundException(ErrorDescription.emptyAuthorList);
+            throw new NotFoundException(ErrorDescription.EMPTY_AUTHOR_LIST);
         }
         return authorRepository.findAll();
     }
@@ -34,7 +34,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public Optional<Author> getAuthorById(UUID id) {
         if (!authorRepository.existsById(id)) {
-            throw new NotFoundException(ErrorDescription.authorNotFoundException);
+            throw new NotFoundException(ErrorDescription.AUTHOR_NOT_FOUND_EXCEPTION);
         }
         return authorRepository.findById(id);
     }
@@ -42,7 +42,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public Author save(Author author) {
         if (authorRepository.existsById(author.getId())) {
-            throw new ConflictException(ErrorDescription.authorExistException);
+            throw new ConflictException(ErrorDescription.AUTHOR_EXIST_EXCEPTION);
         }
         return authorRepository.save(author);
     }
@@ -50,7 +50,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public void removeById(UUID id) {
         if (!authorRepository.existsById(id)) {
-            throw new NotFoundException(ErrorDescription.emptyAuthorList);
+            throw new NotFoundException(ErrorDescription.EMPTY_AUTHOR_LIST);
         }
         authorRepository.deleteById(id);
     }

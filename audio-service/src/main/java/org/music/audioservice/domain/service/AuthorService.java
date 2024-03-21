@@ -1,4 +1,4 @@
-package org.music.audioservice.service;
+package org.music.audioservice.domain.service;
 
 import org.music.audioservice.domain.model.Author;
 

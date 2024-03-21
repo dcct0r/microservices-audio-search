@@ -4,7 +4,7 @@ import org.music.audioservice.domain.model.Author;
 import org.music.searchaudioservice.domain.repository.SearchAuthorRepository;
 import org.music.searchaudioservice.handler.errors.ErrorDescription;
 import org.music.searchaudioservice.handler.exceptions.NotFoundException;
-import org.music.searchaudioservice.service.SearchAuthorService;
+import org.music.searchaudioservice.domain.service.SearchAuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,7 @@ public class SearchAuthorServiceImpl implements SearchAuthorService {
     @Override
     public Author findAuthorByFirstNameAndLastName(String firstname, String lastname) {
         Author author = authorRepository.findAuthorByFirstNameAndLastName(firstname, lastname);
-        if (author == null) throw new NotFoundException(ErrorDescription.nameOrTitleNotFoundException);
+        if (author == null) throw new NotFoundException(ErrorDescription.NAME_OR_TITLE_NOT_FOUND_EXCEPTION);
         return authorRepository.findAuthorByFirstNameAndLastName(firstname, lastname);
     }
 
@@ -32,7 +32,7 @@ public class SearchAuthorServiceImpl implements SearchAuthorService {
         Optional<Author> author = authorRepository.findAuthorsByFirstName(firstname);
         return Optional.ofNullable(author.stream()
                 .findAny()
-                .orElseThrow(() -> new NotFoundException(ErrorDescription.nameNotFoundException)));
+                .orElseThrow(() -> new NotFoundException(ErrorDescription.NAME_NOT_FOUND_EXCEPTION)));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class SearchAuthorServiceImpl implements SearchAuthorService {
         Optional<Author> author = authorRepository.findAuthorsByCitizenship(citizenship);
         return Optional.ofNullable(author.stream()
                 .findAny()
-                .orElseThrow(() -> new NotFoundException(ErrorDescription.citizenshipNotFoundException)));
+                .orElseThrow(() -> new NotFoundException(ErrorDescription.CITIZENSHIP_NOT_FOUND_EXCEPTION)));
     }
 
     @Override
@@ -48,7 +48,7 @@ public class SearchAuthorServiceImpl implements SearchAuthorService {
         Optional<Author> author = authorRepository.findAuthorsByGenre(genre);
         return Optional.ofNullable(author.stream()
                 .findAny()
-                .orElseThrow(() -> new NotFoundException(ErrorDescription.genreNotFoundException)));
+                .orElseThrow(() -> new NotFoundException(ErrorDescription.GENRE_NOT_FOUND_EXCEPTION)));
     }
 
     @Override
@@ -56,6 +56,6 @@ public class SearchAuthorServiceImpl implements SearchAuthorService {
         Optional<Author> author = authorRepository.findAuthorsByMale(male);
         return Optional.ofNullable(author.stream()
                 .findAny()
-                .orElseThrow(() -> new NotFoundException(ErrorDescription.maleNotFoundException)));
+                .orElseThrow(() -> new NotFoundException(ErrorDescription.MALE_NOT_FOUND_EXCEPTION)));
     }
 }

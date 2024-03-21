@@ -6,7 +6,7 @@ import org.music.audioservice.event.SongSubscriptionEvent;
 import org.music.audioservice.handler.errors.ErrorDescription;
 import org.music.audioservice.handler.exceptions.ConflictException;
 import org.music.audioservice.handler.exceptions.NotFoundException;
-import org.music.audioservice.service.SongService;
+import org.music.audioservice.domain.service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class SongServiceImpl implements SongService {
     @Override
     public List<Song> getAllSongs() {
         if (songRepository.count() == 0) {
-            throw new NotFoundException(ErrorDescription.emptySongList);
+            throw new NotFoundException(ErrorDescription.EMPTY_SONG_LIST);
         }
         return songRepository.findAll();
     }
@@ -38,7 +38,7 @@ public class SongServiceImpl implements SongService {
     @Override
     public Optional<Song> getSongById(UUID id) {
         if (!songRepository.existsById(id)) {
-            throw new NotFoundException(ErrorDescription.songNotFoundException);
+            throw new NotFoundException(ErrorDescription.SONG_NOT_FOUND_EXCEPTION);
         }
         return songRepository.findById(id);
     }
@@ -46,7 +46,7 @@ public class SongServiceImpl implements SongService {
     @Override
     public Song save(Song song) {
         if (songRepository.existsById(song.getId())) {
-            throw new ConflictException(ErrorDescription.songExistException);
+            throw new ConflictException(ErrorDescription.SONG_EXIST_EXCEPTION);
         }
         songRepository.save(song);
         return song;
@@ -57,13 +57,13 @@ public class SongServiceImpl implements SongService {
         return songRepository.findById(id).map(s -> {
                     s.setDescription(description);
                     return songRepository.save(s);
-                }).orElseThrow(() -> new NotFoundException(ErrorDescription.songNotFoundException));
+                }).orElseThrow(() -> new NotFoundException(ErrorDescription.SONG_NOT_FOUND_EXCEPTION));
     }
 
     @Override
     public void removeById(UUID id) {
         if (!songRepository.existsById(id)) {
-            throw new NotFoundException(ErrorDescription.emptySongList);
+            throw new NotFoundException(ErrorDescription.EMPTY_SONG_LIST);
         }
         songRepository.deleteById(id);
     }
@@ -71,7 +71,7 @@ public class SongServiceImpl implements SongService {
     @Override
     public void songSubscription(UUID id) {
         if(songRepository.existsById(id)) {
-           throw new ConflictException(ErrorDescription.songExistException);
+           throw new ConflictException(ErrorDescription.SONG_EXIST_EXCEPTION);
         }
         kafkaTemplate.send("songSubscription", new SongSubscriptionEvent(
                 "You have subscribed to the track, when it is added we will definitely notify you",

@@ -1,4 +1,4 @@
-package org.music.searchaudioservice.service;
+package org.music.searchaudioservice.domain.service;
 
 
 import org.music.audioservice.domain.model.Song;
